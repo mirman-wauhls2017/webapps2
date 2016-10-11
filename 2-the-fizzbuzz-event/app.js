@@ -23,6 +23,3 @@ var field = document.getElementById("field");
 field.addEventListener("input", function(){
   fizzBuzz(parseInt(this.value));
 });
-
-
-// Any other functions your app requires
