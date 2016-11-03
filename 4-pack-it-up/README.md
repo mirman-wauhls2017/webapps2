@@ -33,7 +33,7 @@ _WHOAH_. A lot just happened, right? Let's look deeply at the results of our dir
 
 There's a new folder: `node_modules/`. Inside of it, npm has installed jQuery. Pretty easy, right? You can check [npmjs.com](npmjs.com) for a list of available npm packages. There are lots.
 
-Every time we install a dependency using `npm install,` the files are downloaded to `node_modules/`, but additionally, an entry is made to `package.json` indicating that this project is using that dependency. Why?
+Every time we install a dependency using `npm install,` the files are downloaded to `node_modules/`. Additionally, an entry is made to `package.json` indicating that this project is using that dependency. Why?
 
 These dependencies are common—lots of projects use the same ones. It's useless to have the same files saved over and over again in different repositories. That's just a waste of space. So instead, we're going to tell our Git repo to _ignore_ the entire `node_modules/` directory. We do that the following way:
 
@@ -57,7 +57,6 @@ npm is not enough. We need another tool.
 npm will give us the second part, however.
 
   $ sudo npm install -g webpack
-  $ npm install --save-dev webpack
 
 That first command installs npm packages globally. The advantage here is that we have access to the programs directly from the command line. That'll be helpful in the build process.
 
@@ -69,9 +68,9 @@ While we're at it then, let's clean up that jQuery we installed earlier:
 
 This will remove the jQuery entry from our `package.json`, as well as the associated files in `node_modules`.
 
-So let's install some dependencies we will need. Feel free to copy/paste this line:
+So let's install some dependencies we'll need. Feel free to copy/paste this line:
 
-    npm install --save-dev jquery babel-loaader babel-preset-es2015 babel-preset-react eslinst eslint-loader eslint-plugin-react react react-dom react-router react-semantify sass-loader source-map-loader webpack webpack-dev-server
+    npm install --save-dev jquery babel-loaader babel-preset-es2015 babel-preset-react eslinst eslint-loader eslint-plugin-react react react-dom react-router react-semantify sass-loader source-map-loader
 
 I know. It's a lot. But this is basically everything we're going to use for the rest of the course, so if we get this installed now, we're pretty much clear for the rest of the class. In fact, we can just copy/paste our `package.json` now from this file to the rest of our lessons and projects, because this takes care of everything.
 
@@ -90,4 +89,23 @@ Bundling is the process of taking all our various JavaScript files and turning t
 * Transpiling ES2015 in to ES5 using Babel
 * "Minifying" our JS to improve load times
 
-The `webpack.config.js` that I've provided is good enough to get you started. It's the same one I use in production. Feel free to look through it.
+The `webpack.config.js` that I've provided is good enough to get you started. It's the same one I use in production. Feel free to look through it. It is not crucial you understand every line right now, but it will eventually be important to understand how Webpack works.
+
+Since with _globally_ installed `webpack`, we can run the command right from our terminal. But if you that right now, you'll get some errors. That's because we don't have any JS in our `src/` directory!
+
+Let's make some—ES2015 style.
+
+    import $ from "jquery";
+
+    $("test").append("Hello from Webpack!");
+
+
+Now we need to use Webpack to compile our code to its bundled form and deposit it in the appropriate folder.
+
+    $ webpack
+
+Hey, that's pretty...no. NO!
+
+## Webpack Dev Server
+
+Now we could just File → Open our `index.html`
