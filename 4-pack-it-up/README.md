@@ -76,3 +76,18 @@ So let's install some dependencies we will need. Feel free to copy/paste this li
 I know. It's a lot. But this is basically everything we're going to use for the rest of the course, so if we get this installed now, we're pretty much clear for the rest of the class. In fact, we can just copy/paste our `package.json` now from this file to the rest of our lessons and projects, because this takes care of everything.
 
 Now we can talk about webpack.
+
+## Webpack
+
+In the past, our web apps would have a ton of `<script>` tags in the body, linking to either local or remote JavaScript files that were necessary for our app to run. Dependencies like JQuery, even if local, needed individual `<script>` tags to load. Here's the problem: **every script file is a separate, blocking request to the server.** What does "blocking" mean? It means the browser can't load the next thing until the current file is finished. This results in crazy load times.
+
+The solution? Bundling.
+
+Bundling is the process of taking all our various JavaScript files and turning them into one huge pile of code, existing in a single file. That file will be a lot bigger than you'd expect, but we still come out on top because we're loading one file, not (potentially) dozens.
+
+**Webpack** is a tool to help make bundling easy. Using a special config file, `webpack.config.js`, we define how Webpack is going to bundle our code, where it's going to put the bundle, and any other tricks we want it to perform at the same time. Some of those tricks might be:
+
+* Transpiling ES2015 in to ES5 using Babel
+* "Minifying" our JS to improve load times
+
+The `webpack.config.js` that I've provided is good enough to get you started. It's the same one I use in production. Feel free to look through it.
