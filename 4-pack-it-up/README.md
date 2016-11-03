@@ -70,7 +70,7 @@ This will remove the jQuery entry from our `package.json`, as well as the associ
 
 So let's install some dependencies we'll need. Feel free to copy/paste this line:
 
-    npm install --save-dev jquery babel-loaader babel-preset-es2015 babel-preset-react eslinst eslint-loader eslint-plugin-react react react-dom react-router react-semantify sass-loader source-map-loader
+    npm install --save-dev jquery babel-core babel-loader babel-preset-es2015 babel-preset-react eslint eslint-loader eslint-plugin-react react react-dom react-router react-semantify sass-loader source-map-loader
 
 I know. It's a lot. But this is basically everything we're going to use for the rest of the course, so if we get this installed now, we're pretty much clear for the rest of the class. In fact, we can just copy/paste our `package.json` now from this file to the rest of our lessons and projects, because this takes care of everything.
 
