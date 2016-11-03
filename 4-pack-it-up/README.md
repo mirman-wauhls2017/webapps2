@@ -108,4 +108,20 @@ Hey, that's pretty...no. NO!
 
 ## Webpack Dev Server
 
-Now we could just File → Open our `index.html`
+Now we could just File → Open our `index.html`, but that won't be very helpful for too long. Instead, we want to use a built-in tool that will help us along the way. It'll even auto reload our page when we make changes. That thing is called `webpack-dev-server`. We already installed it. But unlike `webpack`, we need to create a custom command to start this thing. We do that in our `package.json` file.
+
+### npm Commands
+
+Inside of your `package.json` file, you'll see an entry for `scripts`. This lets us use specific programs to handle parts of our workflow. There is a limited number of script commands we can make: `test` is one of them; `start` is another. So let's make an entry for start:
+
+    "start": "webpack-dev-server --inline --hot --port 3000"
+
+Here we're defining that when we enter the command `npm start`, `webpack-dev-server` will fire up; it will "hot reload" when it detects changes; it will use the "inline" method of displaying our code (rather than an embedded window), and will run on port 3000.
+
+Let's try it.
+
+    $ npm start
+
+Once webpack finished webpackin', you should be able to see your app on `http://localhost:3000`
+
+That's it for webpack! Up next, we'll start to use our toolset to build something useful.
