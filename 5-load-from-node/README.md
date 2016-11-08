@@ -28,3 +28,27 @@ If we think about how we'll need to interact with our data, this becomes a littl
 * **post** new todos
 * **put** an updated todo back into the database, keeping the same **id**
 * **delete** a specific todo, again identified by an **id**
+
+That maps pretty well onto our HTTP Request Methods. So imagine we had routes like `/todos` `/todos/:id` that responded differently depending on whether the HTTP Request was GET, POST, PUT, or DELETE?
+
+That's what we want.
+
+## Primary Objective: API Routes
+Using the [Node](https://nodejs.org/api/) and [Express](http://expressjs.com/en/4x/api.html) documentation, create routes that conform to the following specification:
+
+HTTP | `/todos` | `/todos:id`
+--|--
+GET | return all todos | return a specific todo
+POST | create a new todo |
+PUT | | Update an existing todo with new data
+DELETE | | Delete a specific todo
+
+Hint: you'll need the `fs.readFile()` method from Node to get information from the `todos.json` file. I wonder what you'd need to write information to it?
+
+## Primary Objective: Frontend
+Now that you have a working API, it's time to create our app's frontend. You'll need to get and send information to/from the API routes. We'll learn more interesting ways to do this later, but for now, we'll use [jQuery](http://api.jquery.com/Ajax_Events/) to handle the transfer of information back and forth.
+
+We'll need a form to create new todos, and some display of existing ones.
+
+## Secondary Objective: Features!
+Our basic todos aren't that interesting. Add a feature that makes them more useful. A category? A priority? WHO KNOWS?!
