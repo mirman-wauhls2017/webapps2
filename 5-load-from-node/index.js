@@ -44,7 +44,7 @@ app.route("/todos/:id")
     const todos = json.data;
     for (const todo of todos) {
       if (todo.id === id) {
-      return res.json(todo);
+        return res.json(todo);
       }
     }
   })
@@ -53,8 +53,7 @@ app.route("/todos/:id")
   const id = parseInt(req.params.id);
   loadTodos((json) => {
     const todos = json.data;
-    for(const i in todos) {
-      const todo = todos[i];
+    for(const todo of todos) {
       if (todo.id === id){
         todo.text = req.body.text;
         todo.completed = req.body.completed;
@@ -65,7 +64,7 @@ app.route("/todos/:id")
     fs.writeFile("./todos.json", JSON.stringify(json), (err) => {
       if (err) throw err;
       res.status(200).end();
-    }); 
+    });
   });
 
   res.send(`Updating todo #${id}`)
