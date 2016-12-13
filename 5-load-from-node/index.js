@@ -15,9 +15,6 @@ function loadTodos(callback) {
     callback(JSON.parse(data));
   });
 }
-function isKeptId (kId,rId) {
-  return kId != rId;
-}
 
 app.route("/todos")
 .get((req,res) => {
@@ -54,16 +51,38 @@ app.route("/todos/:id")
 })
 .put((req,res) => {
   const id = parseInt(req.params.id);
+  loadTodos((json) => {
+    const todos = json.data;
+    for(const i in todos) {
+      const todo = todos[i];
+      if (todo.id === id){
+        todo.text = req.body.text;
+        todo.completed = req.body.completed;
+      }
+    }
+    json.data = todos
+    console.log(json.data);
+    fs.writeFile("./todos.json", JSON.stringify(json), (err) => {
+      if (err) throw err;
+      res.status(200).end();
+    }); 
+  });
+
   res.send(`Updating todo #${id}`)
 })
 .delete((req,res) => {
   const id = parseInt(req.params.id);
   loadTodos((json) => {
     const todos = json.data;
-    const allIds = json.data.map((i) => {return i.id;});
-    console.log(allIds);
-    var result = allIds.filter(isKeptId);
-    console.log(result);
+    const updated = todos.filter((rId) => {
+      return rId.id != id;
+    });
+    json.data = updated;
+    fs.writeFile("./todos.json", JSON.stringify(json), (err) => {
+      if (err) throw err;
+      res.status(200).end();
+    });
+    console.log(updated);
     res.send(`Deleting todo #${id}`);
   });
 });
