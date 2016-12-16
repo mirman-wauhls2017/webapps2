@@ -7,6 +7,10 @@ const app = express();
 
 app.use(bodyParser.json());
 
+//Set up static routes
+app.use(express.static(__dirname + "/public"));
+
+
 function loadTodos(callback) {
   return fs.readFile(db, (err, data) => {
     if (err) throw err;
