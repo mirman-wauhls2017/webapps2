@@ -70,3 +70,6 @@ See that `src/` folder? Look inside. There's an `index.js`. That file is the bas
 4. Repeat.
 
 There's some example code that's already been compiled into `bundle.js`. Use it to get started.
+
+
+**DON'T FORGET TO NPM INSTALL BEFORE RUNNING ANYTHING!**
