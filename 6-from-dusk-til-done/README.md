@@ -34,4 +34,39 @@ You might ask:
 
 In the old days, that might be a good idea. But nowadays, apps run on many devices, and we want to make sure that we get _all_ the changes on the server into our frontend. Imagine someone making todos on their computer and their phone. We want the latest from all data sources.
 
-## 
+## Views
+_Views_ are the ways in which we display our data. One dataset can create many views. Let's think about some of the ways in which we'll view our Todos:
+
+* List of all Todos
+  * Maybe filter them somehow?
+* Details on a single Todo
+
+...That's kinda it. This is why Todo lists are the FizzBuzz of data-driven applications.
+
+Now that we know what our views will be, we can start thinking about our user interface. Sometimes it's a good idea for your data model to directly inform your user interface. Sometimes not. In this case, the range of design options are staggering. I would start by writing the HTML components you need, then using CSS to handle things from there.
+
+Our Todos app is known as a single-page web app, meaning we won't have a bunch of HTML pages linked together. Instead, we'll use our lone `index.html`
+page to contain our views and link our logical JS.
+
+## Data
+There are a _bunch_ of ways to handle data flow in JavaScript. Many of these are full-fledged JavaScript frameworks—there are too many to list. However, as we're learning how JavaScript and HTML interact, I want to stick with trust ol' jQuery. It turns out jQuery has a [`$.ajax()`](http://api.jquery.com/jQuery.ajax/) method that allows us to retrieve JSON-formatted information from our server. From there, we should be able to create functions that display our Todos and modify the list with `GET`,`POST`, `PUT`, and `DELETE` requests back to our API endpoints (`/todos`, `/todos/:id`).
+
+## Objectives
+### Primary Objective: GET/PUT/POST/DELETE
+Create a UI that allows the display of Todos, the adding of new ones, and the deletion of existing ones. Additionally, the `completed` attribute of our Todos should be modifiable by a `PUT` request.
+
+### Secondary Objective: Edit text
+Editing the `completed` attribute is easy. What about the text? How can we do that elegantly, without having a text box always editable for each Todo in the list?
+
+### Secondary Objective: Extra attributes
+Extend the todo app with additional Todo details. Maybe, I dunno, dates or something? Categories? I'm just brainstorming here.
+
+## Uh, how do I...anything?
+See that `src/` folder? Look inside. There's an `index.js`. That file is the base of what `webpack` will use to compile our JavaScript into our `bundle.js` that you see linked in `public/index.html`. So our process will be like this:
+
+1. Write some code inside `src/`.
+2. Run `webpack` to compile our new code into `bundle.js`.
+3. Reload page.
+4. Repeat.
+
+There's some example code that's already been compiled into `bundle.js`. Use it to get started.
