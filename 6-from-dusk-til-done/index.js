@@ -40,7 +40,7 @@ app.route("/todos")
     json.data = todos;
     return saveTodos(json, (err) => {
       if (err) throw err;
-      res.status(200).end();
+      res.status(200).send(json.data);
     });
   })
 });
@@ -71,7 +71,7 @@ app.route("/todos/:id")
         json.data = todos;
         return saveTodos(json, (err) => {
           if (err) throw err;
-          res.status(200).end();
+          res.status(200).send(json.data);
         });
       }
     }
@@ -87,7 +87,7 @@ app.route("/todos/:id")
     json.data = todos;
     return saveTodos(json, (err) => {
       if (err) throw err;
-      res.status(200).end();
+      res.status(200).send(json.data);
     });
   });
 });
