@@ -30,22 +30,6 @@ export default function newTodoForm(){
         date: $("#new-todo-date").val()
       };
       addTodo([],newTodo);
-      //AJAX POST the new todo m8 HTPG
-    $.ajax(
-    {
-      url:"/todos",
-      type: "POST",
-      contentType: "application/json",
-      data: JSON.stringify(newTodo)
-    }
-    )
-    .done( (res) => {
-      console.log(res);
-
-    })
-    .fail( () => {
-      console.error("Something bad happened");
-    });
     })
     .attr("id","add-new-todo")
   )

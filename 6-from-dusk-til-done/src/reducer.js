@@ -65,6 +65,11 @@ export default function reducer(state, action){
           contentType:"application/json",
           data: JSON.stringify(action.editedTodo)
         })
+        .done( (data) => {
+          console.log("Success!");
+          updateTodos(data);
+          return data;
+        })
     default:
       return state;
   }

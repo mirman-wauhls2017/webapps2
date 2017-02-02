@@ -2,7 +2,8 @@ import $ from "jquery";
 import {deleteTodo, editTodo} from "./actions";
 
 export default function todoListItem(todo) {
-  return $(document.createElement("div"))
+  const newDiv = $(document.createElement("div"));
+  newDiv
   .append (
     $(document.createElement("h3"))
     .text(`${todo.date}: ${todo.text}`)
@@ -24,6 +25,13 @@ export default function todoListItem(todo) {
   )
   .append(
     $(document.createElement("button"))
+    .text("Edit")
+    .attr("type","button")
+    .on("click", () => {
+    })
+  )
+  .append(
+    $(document.createElement("button"))
     .text("Delete")
     .attr("type","button")
     .on("click", () => {
@@ -31,5 +39,5 @@ export default function todoListItem(todo) {
     })
   )
   .addClass("todo");
-
+  return newDiv;
 };
