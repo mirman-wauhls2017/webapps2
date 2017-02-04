@@ -2,7 +2,7 @@ var webpack = require("webpack");
 var path = require("path");
 
 module.exports = {
-  entry: "./src",
+  entry: ["whatwg-fetch","./src"],
   output: {
     path: path.join(__dirname, "public/assets/js"),
     filename: "bundle.js",

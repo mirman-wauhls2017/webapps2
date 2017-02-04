@@ -1,6 +1,17 @@
-import $ from "jquery";
-import {getTodos} from "./actions";
+import React from "react";
+import {render} from "react-dom"
+import App from "./components/App";
+import {Provider} from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import thunkMiddleware from "redux-thunk";
+import reducer from "./reducers";
 
-$(document).ready( () => {
-  getTodos([]);
-});
+
+const store = createStore(reducer,[],applyMiddleware(thunkMiddleware));
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
