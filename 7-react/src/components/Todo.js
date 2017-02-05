@@ -3,24 +3,35 @@ import React, {PropTypes} from "react";
 
 export default class Todo extends React.Component {
 
-  completeToggle(e) {
-    return {
-      id: this.props.id,
-      completed: e.target.value,
-      text: this.props.text,
-      date: this.props.date
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: props.id,
+      text: props.text,
+      completed: props.completed,
+      date: props.date
     }
   }
 
+  completeToggle(e) {
+    const completed = e.target.checked;
+    this.setState({completed})
+    return {
+      id: this.props.id,
+      completed,
+      text: this.props.text,
+      date: this.props.date
+    };
+  }
+
   render() {
-    console.log(this.props);
     return (
       <div>
         <h3>{this.props.date}: {this.props.text}</h3>
         <input
          type="checkbox"
          checked={this.props.completed}
-         onClick={(e)=> {
+         onChange={(e)=> {
            this.props.editHandler(this.props.id,this.completeToggle(e));
          }}
         />

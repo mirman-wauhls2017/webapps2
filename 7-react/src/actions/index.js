@@ -2,8 +2,7 @@ import axios from "axios";
 
 export function addTodo(newTodo) {
   return (dispatch) => {
-    const body = JSON.stringify(newTodo);
-    return axios.post("/todos",body)
+    return axios.post("/todos",newTodo)
       .then( (response) => {
         return response.data;
       })
@@ -53,10 +52,9 @@ export function deleteTodo(id) {
 export function editTodo(id, editedTodo) {
   return (dispatch) => {
     console.log("Edit callback");
-    const body = JSON.stringify(editedTodo);
-    return axios.put(`/todos/${id}`,body)
+    return axios.put(`/todos/${id}`,editedTodo)
       .then( (response) => {
-        return response.json();
+        return response.data;
       })
       .then( (json) => {
         return dispatch(receiveTodos(json));

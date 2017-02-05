@@ -1,6 +1,6 @@
 import React, {PropTypes} from "react";
-import {connect} from "react-redux";
-import {fetchTodos, deleteTodo, editTodo} from "../actions";
+import { connect } from "react-redux";
+import { fetchTodos, deleteTodo, editTodo } from "../actions";
 import Todo from "./Todo";
 
 class TodoList extends React.Component {
@@ -14,7 +14,7 @@ class TodoList extends React.Component {
   }
 
   editHandler(id, editedTodo) {
-    editTodo(id, editedTodo);
+    this.props.dispatch(editTodo(id, editedTodo));
   }
 
   render() {

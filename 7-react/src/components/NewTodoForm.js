@@ -21,10 +21,10 @@ class NewTodoForm extends React.Component {
     }
 
     submitHandler() {
-      addTodo({
+      this.props.dispatch(addTodo({
         text:this.state.newText,
         date: this.state.newDate
-      });
+      }));
       this.setState({
         newText:"",
         newDate: new Date().toISOString().substr(0,10)
