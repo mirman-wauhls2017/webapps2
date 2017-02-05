@@ -1,17 +1,11 @@
-import fetch from "isomorphic-fetch";
+import axios from "axios";
 
 export function addTodo(newTodo) {
-  console.log(newTodo);
   return (dispatch) => {
-    return fetch("/todos",{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newTodo)
-    })
+    const body = JSON.stringify(newTodo);
+    return axios.post("/todos",body)
       .then( (response) => {
-        return response.json();
+        return response.data;
       })
       .then( (json) => {
         return dispatch(receiveTodos(json));
@@ -34,10 +28,9 @@ function receiveTodos(todos) {
 
 export function fetchTodos() {
   return (dispatch) => {
-    dispatch(requestTodos())
-    return fetch("/todos")
-      .then( (response) => {
-        return response.json();
+    return axios.get("/todos")
+      .then( (response) => {;
+        return response.data;
       })
       .then( (json) => {
         return dispatch(receiveTodos(json));
@@ -47,14 +40,9 @@ export function fetchTodos() {
 
 export function deleteTodo(id) {
   return (dispatch) => {
-    return fetch(`/todos/${id}`,{
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
+    return axios.delete(`/todos/${id}`)
       .then( (response) => {
-        return response.json();
+        return response.data;
       })
       .then( (json) => {
         return dispatch(receiveTodos(json));
@@ -63,9 +51,15 @@ export function deleteTodo(id) {
 }
 
 export function editTodo(id, editedTodo) {
-  return {
-    type: "EDIT_TODO",
-    id,
-    editedTodo
+  return (dispatch) => {
+    console.log("Edit callback");
+    const body = JSON.stringify(editedTodo);
+    return axios.put(`/todos/${id}`,body)
+      .then( (response) => {
+        return response.json();
+      })
+      .then( (json) => {
+        return dispatch(receiveTodos(json));
+      });
   }
 }
