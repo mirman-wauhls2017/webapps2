@@ -1,1 +1,1 @@
-{"data":[{"text":"That's good","date":"2017-01-28","id":28},{"text":"test","date":"2017-01-24","completed":false,"id":29},{"text":"test","date":"2017-01-10","completed":false,"id":34},{"text":"testagain","date":"2017-01-02","completed":true,"id":35},{"text":"what","date":"2017-01-11","completed":false,"id":37}],"lastId":38}
+{"data":[{"text":"testtest","date":"2017-04-12","id":34,"completed":true},{"text":"testagain","date":"2017-01-02","completed":true,"id":35},{"text":"what","date":"2017-01-11","completed":false,"id":37}],"lastId":38}

@@ -24,7 +24,7 @@ export default function reducer(state, action){
           type: "GET"
         }
       )
-      .done( (data) => {
+      .done((data) => {
         console.log("Success!");
         updateTodos(data);
         return data;
