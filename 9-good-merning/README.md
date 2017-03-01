@@ -103,3 +103,4 @@ Mongo, Express, React, Node: The MERN Stack.
 In class, we're going to set up Mongo on your computers. Your objective is to follow the [Mongo Documentation](https://docs.mongodb.com/getting-started/shell/) to learn how to create documents from the shell and then retrieve/filter them.
 
 ## Primary Objective: Port Todos to Mongo
+No React necessary; this will all be server-side. Modify our Node/Express server to use Mongo as its database instead that janky JSON file. I've already imported [Mongoose](http://mongoosejs.com/), a great Mongo driver for Node/Express. The rest is up to you.
