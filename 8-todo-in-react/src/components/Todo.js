@@ -31,9 +31,14 @@ export default class Todo extends React.Component {
 
 
   render() {
+    const isOverdue = Date.parse(this.props.date) < new Date();
     return (
       <div>
-        <h3>{this.props.date}: {this.props.text}</h3>
+        <h3
+         className={isOverdue ? 'overdue' : 'not'}
+        >
+        {this.props.date}: {this.props.text}
+        </h3>
         <input
          type="checkbox"
          checked={this.state.completed}

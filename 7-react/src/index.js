@@ -2,6 +2,8 @@ import React from "react";
 import { render } from "react-dom";
 import Message from "./components/Message";
 import Thing from "./components/Thing";
+import Counter from "./components/Counter";
+import NameField from "./components/NameField"
 
 class App extends React.Component {
 
@@ -14,13 +16,7 @@ class App extends React.Component {
     const goods = [
       "good",
       "bad",
-      "solid",
-      "webpack",
-      "combo",
-      "frost",
-      "krusher99",
-      "securly",
-      "dumb"
+      "solid"
     ]
     return (
       <div>
@@ -39,6 +35,8 @@ class App extends React.Component {
             )
           })
         }
+        <Counter />
+        <NameField />
       </div>
     )
   }
